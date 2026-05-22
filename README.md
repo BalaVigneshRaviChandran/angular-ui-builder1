@@ -45,9 +45,6 @@ apm install syncfusion/angular-ui-builder -t cursor
 # Install for Codex
 apm install syncfusion/angular-ui-builder -t codex
 
-# Install for Windsurf
-apm install syncfusion/angular-ui-builder -t windsurf
-
 ```
 
 ## How It Works
