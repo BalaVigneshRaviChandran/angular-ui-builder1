@@ -374,7 +374,7 @@ If this default Angular template (including styles and main layout tags) is pres
    export class AppComponent {}
    ```
 
-3. **Ensure CSS is loaded**:
+2. **Ensure CSS is loaded**:
    - If no framework/greenfield CSS styles: Automatically imported in component
    - If Tailwind: Classes applied directly
    - If Syncfusion theme: Already imported at app entry point (Stage 4)
