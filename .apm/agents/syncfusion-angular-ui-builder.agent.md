@@ -109,6 +109,7 @@ description: "Build Angular UI with Syncfusion components, design system, and va
 6. Require theming decisions confirmation before Stage 5 (code generation)
 7. Stage 6 must prompt user to choose between validation or skipping
 8. Prevent stage jumping or shortcuts
+9. **🚫 NEVER replace a Syncfusion component with a native HTML element** — if a component fails, read the skill file and fix it. Never fall back to `<input>`, `<select>`, `<table>`, `<button>`, etc.
 
 ## Stage Execution
 
@@ -134,7 +135,7 @@ Load: `syncfusion-angular-ui-builder/references/stage-3-layout-analysis.md`
 
 **CRITICAL**: Must map to specific Syncfusion components
 Create Component Mapping JSON with Syncfusion component mapping
-List 3+ component names explicitly (TextBox, DataGrid, CheckBox, etc.)
+List 3+ component names explicitly (TextBoxComponent, GridComponent, CheckBoxComponent, etc.)
 Run ComponentMapper script to generate icon + component mappings
 
 Output: Component Mapping JSON + Component + Icon mappings + "Syncfusion Components Selected: [name1], [name2], [name3]" + "Icons Selected: [name1], [name2], [name3]"
@@ -251,6 +252,8 @@ Re-ask the stage question or clarify intent.
 4. **RESOLVE** using documented approach from skill file
 5. **RE-RUN** `ng serve` and verify
 
+**🚫 NEVER replace a failing Syncfusion component with a native HTML element** — removing or substituting a component is not a fix. If the skill file does not resolve the error, escalate to the user.
+
 **Examples:**
 - TextAreaComponent error → Read `syncfusion-angular-inputs/SKILL.md`
 - GridComponent error → Read `syncfusion-angular-grid/SKILL.md`
@@ -259,7 +262,7 @@ Re-ask the stage question or clarify intent.
 **Never:**
 - ❌ Assume property names or event handlers
 - ❌ Modify code without checking skill documentation first
-- ❌ Use native HTML alternatives without verifying in skill
+- ❌ Use native HTML alternatives (`<input>`, `<select>`, `<table>`, etc.) in place of Syncfusion components
 
 **Always:**
 - ✅ Skill file is source of truth for correct usage
@@ -321,6 +324,7 @@ User: "DataGrid is not rendering"
 - ✅ ALWAYS reference component version in skill file
 - ❌ NEVER assume component setup without reading skill file
 - ❌ NEVER skip component skill verification
+- ❌ NEVER use native HTML elements as fallbacks for Syncfusion components
 
 **If Component Skill File Missing:**
 - State: "Component skill file not found at expected location"
@@ -358,3 +362,4 @@ Get confirmation before code generation and validation
 - **⚠️ MANDATORY: When user reports component rendering/functionality issues, ALWAYS navigate to component skill file first**
 - **⚠️ MANDATORY: Never generate component code from memory if component skill file exists** — verify against skill file for correct imports, props, and types
 - **⚠️ MANDATORY: Always use `ng serve` for development verification after Stage 8. Use `ng build` only for explicit production/staging checks**
+- **⚠️ MANDATORY: Never replace a Syncfusion component with a native HTML element** — fix using the skill file, not by substituting `<input>`, `<select>`, `<table>`, or other HTML elements
